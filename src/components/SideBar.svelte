@@ -52,7 +52,7 @@
         </div>
         <div>
             <button class="flex flex-col items-center text-red-500 p-2 rounded-lg bg-gray-200" on:click={() => handleQuit()}>
-                <svg class="h-5 w-5 "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 13a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v9a1 1 0 0 1-1 1Z" style="fill:currentColor;width:2"/><path d="M12 22A9 9 0 0 1 5.64 6.64a1 1 0 0 1 1.41 1.41 7 7 0 1 0 9.9 0 1 1 0 0 1 1.41-1.41A9 9 0 0 1 12 22Z" style="fill:currentColor;width:6"/></svg>
+                <svg class="h-5 w-5 "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 13a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v9a1 1 0 0 1-1 1Z" style="fill:currentColor;stroke-width:2"/><path d="M12 22A9 9 0 0 1 5.64 6.64a1 1 0 0 1 1.41 1.41 7 7 0 1 0 9.9 0 1 1 0 0 1 1.41-1.41A9 9 0 0 1 12 22Z" style="fill:currentColor;stroke-width:6"/></svg>
                 <!-- <span class="text-xs uppercase tracking-widest font-bold">Keluar</span> -->
             </button>
         </div>

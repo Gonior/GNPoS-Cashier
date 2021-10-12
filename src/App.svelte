@@ -28,7 +28,7 @@
 <main class="bg-indigo-600 h-screen p-0 absolute inset-0">
 	<div class="flex relative">
 		<SideBar on:selectedMenu={(e) => handleChangeMenu(e)}/>
-		<div class="w-full h-screen bg-gray-50 rounded-l-3xl shadow-lg pt-3 pl-3">
+		<div class="w-full h-screen bg-gray-100 rounded-l-3xl shadow-lg p-3 overflow-y-auto">
 			<svelte:component this={pages.find(p => p.id === id).content} />
 		</div>
 		
