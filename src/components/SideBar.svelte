@@ -1,6 +1,6 @@
 <script>
     import {createEventDispatcher} from 'svelte'
-    // import {ipcRenderer} from 'electron'
+    const {ipcRenderer} = window.require('electron')
     const dispatch = createEventDispatcher()
     let menus = [
         {
@@ -34,7 +34,7 @@
     }
 
     const handleQuit = () => {
-        // ipcRenderer.send('close-me')
+        ipcRenderer.send('close-me')
     }
     
 </script>
@@ -45,7 +45,7 @@
         </div>
         <div class="flex flex-col space-y-12">
             {#each menus as menu}
-                <button on:click={() => changeMenu(menu.id)} class="rounded-2xl p-4 transition {menu.active ? 'translate-x-10 bg-gray-50 shadow-lg text-red-600':'hover:bg-gray-50'} transform duration-300 ease-in-out ">
+                <button on:click={() => changeMenu(menu.id)} class="z-10 rounded-2xl p-4 transition {menu.active ? 'translate-x-10 bg-gray-50 shadow-lg text-red-600':'hover:bg-gray-50'} transform duration-300 ease-in-out ">
                     {@html menu.icon}
                 </button>
             {/each}

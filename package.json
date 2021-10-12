@@ -1,13 +1,13 @@
 {
   "name": "svelte-app",
   "version": "1.0.0",
-  "license" : "MIT",
+  "license": "MIT",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
     "electron": "electron .",
-    "electron-dev" : "wait-on http://localhost:5000 && electron ."
+    "electron-dev": "wait-on http://localhost:5000 && electron ."
   },
   "main": "index.js",
   "devDependencies": {
@@ -24,7 +24,8 @@
     "rollup-plugin-terser": "^7.0.0",
     "svelte": "^3.0.0",
     "svelte-preprocess": "^4.6.1",
-    "tailwindcss": "^2.0.2"
+    "tailwindcss": "^2.0.2",
+    "wait-on": "^6.0.0"
   },
   "dependencies": {
     "electron-builder": "22.1.0",

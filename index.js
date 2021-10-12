@@ -10,8 +10,10 @@ function createWindow() {
             nodeIntegration : true
         }
     })
-    console.log('dah running cok')
+    win.setMenuBarVisibility(false)
+
     win.loadURL(path.join(__dirname, "public/index.html"))
+    // win.loadURL('http://localhost:5000')
 }
 
 
