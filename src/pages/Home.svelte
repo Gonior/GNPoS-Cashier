@@ -5,8 +5,8 @@
 
 <div in:fade={{duration:200}} class="flex h-full">
     <div class="w-1/2 p-2">
-        <MainField /></div>
-    <div class="w-1/2 bg-red-500 p-2" >a</div>
+        <MainField/></div>
+    <div class="w-1/2 p-2" ><MainField/></div>
     
     
 </div>

@@ -1,5 +1,6 @@
 <script>
     import {createEventDispatcher} from 'svelte'
+    // import {ipcRenderer} from 'electron'
     const {ipcRenderer} = window.require('electron')
     const dispatch = createEventDispatcher()
     let menus = [
@@ -34,7 +35,11 @@
     }
 
     const handleQuit = () => {
+        console.log('close')
         ipcRenderer.send('close-me')
+        
+        // dedi()
+        // window.closeCurrentWindow();
     }
     
 </script>

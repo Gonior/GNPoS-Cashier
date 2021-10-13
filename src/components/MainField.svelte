@@ -1,13 +1,412 @@
 <script>
-    
+    import {clickOutside, longpress} from '../lib/myScript'
+    import { slide } from 'svelte/transition';
+    import {onMount} from 'svelte'
     let openMenu = false
-    let myTable;
+    let menuItemsContainer
+    let currentHighlight = - 1;
+    let needEditId
+    let menus = [
+        {
+            id:1,
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+        {
+            id:Math.floor((Math.random() * 1000) + 1),
+            code:3,
+            name : 'Ayam Goreng',
+            price : 18000,
+            qty : 1,
+        },
+
+    ]
+    $: lastHighlight = menus.length|| 0
     const handleScroll = (e) => {
-        myTable.children[34].scrollIntoView({ behavior: 'smooth', block: 'nearest' })
         e.preventDefault()
+        //40 arrowDown || 38 arrowUp
+        let tempHighlight = currentHighlight
+        if (e.keyCode === 40 && currentHighlight < lastHighlight - 1) currentHighlight = currentHighlight + 1
+        if (e.keyCode === 38 && currentHighlight > 0) currentHighlight = currentHighlight-1
+        // console.log({tempHighlight, currentHighlight})
+        if (tempHighlight !== currentHighlight) {
+            changeState(currentHighlight, false)
+        }
+    }
+    const changeState = (i, addNew) => {
+        if (!addNew) {
+            
+            menuItemsContainer.childNodes.forEach(e => e.classList.remove('bg-gray-300'))
+            menuItemsContainer.children[i].classList.add('bg-gray-300')
+            menuItemsContainer.children[i].scrollIntoView({ behavior: 'smooth', block: 'center'})
+            currentHighlight = i
+        } else {menuItemsContainer.children[lastHighlight-1].scrollIntoView({ behavior: 'smooth', block: 'center'})}
+        
+    }
+    const handleClickOutside = (e) => {
+        currentHighlight = -1
+        menuItemsContainer.childNodes.forEach(e => e.classList.remove('bg-gray-300'))
+        needEditId = null
+    }
+    const handleEdit = (e, {id}) => {
+        if (e.keyCode === 37 ||e.keyCode === 39) {
+            console.log(id)
+        }
     }
 </script>
-<svelte:window on:keydown="{handleScroll}" />
+<!-- <svelte:window on:keydown="{handleScroll}" /> -->
 <div class="flex h-full shadow-md rounded-lg flex-col justify-between" >
     <!-- header -->
     <div class="flex flex-col relative p-2">
@@ -32,7 +431,7 @@
 
         </div>
         
-        <div class="flex z-10 {openMenu ? 'scale-100' : 'scale-0'} h-80 overflow-hidden transform  ease-in-out duration-300 flex-col absolute right-0 justify-around top-2 mt-16 mr-3">
+        <div class="flex z-20 {openMenu ? 'scale-100' : 'scale-0'} h-80 overflow-hidden transform  ease-in-out duration-300 flex-col absolute right-0 justify-around top-2 mt-16 mr-3">
             <button class="border-0 outline-none bg-gradient-to-b shadow-2xl from-indigo-600 to-indigo-800 rounded-full p-2 cursor-pointer text-gray-300">
                 <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 6v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12Zm-5-3H9v4h6ZM9 14a3 3 0 0 0 3 3h0a3 3 0 0 0 3-3h0a3 3 0 0 0-3-3h0a3 3 0 0 0-3 3Z" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"/></svg>
             </button>
@@ -54,9 +453,8 @@
 
     
     <!-- body -->
-    <div class="flex-1 px-2 overflow-y-auto text-xs uppercase cursor-pointer" >
-        
-        <table class="relative w-full rounded-lg table-fixed">
+    <div use:clickOutside on:click_outside={handleClickOutside} tabindex="0" on:keydown={handleScroll} class="focus:outline-none flex-1 px-2 overflow-y-auto text-xs uppercase cursor-pointer" >
+        <table class="w-full relative rounded-lg table-fixed">
             <thead>
                 <tr>
                   <th class="sticky bg-gray-200 top-0 py-2 px-2 w-1/2 text-black text-left">nama menu</th>
@@ -65,236 +463,60 @@
                   <th class="sticky bg-gray-200 top-0 px-2 text-black text-right">Subtotal</th>
                 </tr>
             </thead>
-            <tbody class="divide-y" bind:this={myTable}>
-                <tr class="bg-gray-300">
-                    <td class="px-2">Ayam Kampung Goreng</td>
-                    <td class="text-center">35.000</td>
-                    <td class="py-2">
-                        <div class="flex justify-center space-x-1">
-                            <button class="text-white bg-red-600 rounded-full p-1 shadow">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M20 12H4" />
-                                </svg>
-                            </button>
-                            <input type="number" class="py-1 w-10 text-center focus:outline-none focus:border-0 rounded " value="1">
-                            <button class="text-white bg-green-600 rounded-full p-1 shadow">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" />
-                                  </svg>
-                            </button>
-                        </div>
+            <tbody class="divide-y" bind:this={menuItemsContainer}>
+                {#each menus as menu }
+                <tr tabindex="0" class="focus:outline-none px-2 " on:click={() => changeState(menus.indexOf(menu), false)} on:dblclick={() => needEditId = menu.id}>
+                    
+                    <td class="px-2 py-1 relative">
+                        {#if menu.id === needEditId} 
+                            <div transition:slide class="flex items-center justify-between px-4 bg-gradient-to-r from-red-600 to-blue-600 text-gray-200 absolute inset-0 z-10">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                                <button>edit</button>
+                            </div>
+                        {/if}
+                        {menu.name}
                     </td>
-                    <td class="px-2 text-right">75.000</td>
+                    <td class="text-center">{menu.price}</td>
+                    <td class="text-center">{menu.qty}</td>
+                    <td class="px-2 text-right">{menu.qty * menu.price}</td>
+                    
                 </tr>
-                <tr class="bg-gray-300">
+                {/each}
+                <!-- <tr class="bg-gray-300">
                     <td class="px-2">Ayam Kampung Goreng</td>
                     <td class="text-center">35.000</td>
-                    <td class="text-center">1</td>
-                    <td class="px-2 text-right">75.000</td>
-                </tr>
-                <tr class="bg-gray-300">
-                    <td class="px-2">Ayam Kampung Goreng</td>
-                    <td class="text-center">35.000</td>
-                    <td class="">
+                    <td class="text-center">
                         <div class="flex justify-center">
                             <input type="number" class="py-1 w-10 text-center focus:outline-none focus:border-0 rounded " value="1">
                         </div>
                     </td>
                     <td class="px-2 text-right">75.000</td>
                 </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-                <tr>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                    <td class="text-center">Column 1</td>
-                </tr>
-
+                <tr class="bg-gray-300">
+                    <td class="px-2">Ayam Kampung Goreng</td>
+                    <td class="text-center">35.000</td>
+                    <td class="">
+                        <div class="flex justify-center space-x-1">
+                            <button class="text-white bg-red-600 rounded-lg p-0.5 shadow">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
+                                </svg>
+                            </button>
+                            <input type="number" class="py-1 w-10 text-center focus:outline-none focus:border-0 rounded " bind:value={menu.qty}>
+                            <button class="text-white bg-green-600 rounded-lg p-1 shadow">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" />
+                                  </svg>
+                            </button>
+                        </div>
+                        
+                    </td>
+                    <td class="px-2 text-right">75.000</td>
+                </tr> -->
             </tbody>
         </table>
     </div>

@@ -4,6 +4,8 @@
 	import Home from './pages/Home.svelte';
 	import Income from './pages/Income.svelte';
 	import Save from './pages/Save.svelte'
+	// import fs from 'fs'
+	// console.log(fs)
 	$: id = 1;
 	const pages = [
 		{

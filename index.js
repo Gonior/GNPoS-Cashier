@@ -7,13 +7,16 @@ function createWindow() {
         height: 600,
         show : true,
         webPreferences: {
-            nodeIntegration : true
+            // preload: path.join(app.getAppPath(), 'public/preload.js'),
+            nodeIntegration : true,
+            contextIsolation : false
         }
     })
-    win.setMenuBarVisibility(false)
+    // win.setMenuBarVisibility(false)
 
-    win.loadURL(path.join(__dirname, "public/index.html"))
-    // win.loadURL('http://localhost:5000')
+    // win.loadURL(path.join(__dirname, "/public/index.html"))
+    // win.loadFile(path.join(app.getAppPath(), 'public/index.html'))
+    win.loadURL('http://localhost:5000')
 }
 
 
